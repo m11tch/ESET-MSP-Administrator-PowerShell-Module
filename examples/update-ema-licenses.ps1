@@ -2,6 +2,7 @@
 import-module -force ../module/ema.psm1
 #Credentials for EMA user with write access to companies.
 Invoke-EmaAuthenticate -EmaUsername "user@example.com" -EmaPassword "passwordhere"
+#Use the following command to check if there are licenses that have a differce between quantity (purchased seats) and usage (activated seats) and up/downgrade the licenses to the number of activated seats 
 Invoke-EmaUpdateLicenses
 
 #If you want to ignore certain licenses, you can use: 
