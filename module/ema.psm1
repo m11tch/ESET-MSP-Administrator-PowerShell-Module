@@ -1,7 +1,7 @@
 function Invoke-EmaAuthenticate {
     param(
-        $EmaUsername,
-        $EmaPassword
+        [Parameter(Mandatory=$true)][string]$EmaUsername,
+        [Parameter(Mandatory=$true)][string]$EmaPassword
     )
 
     $Body = @{
@@ -27,7 +27,7 @@ function Invoke-EmaAuthenticate {
 
 function Get-EmaCompanies {
     param(
-        $MasterCompanyId
+        [Parameter(Mandatory=$true)][string]$MasterCompanyId
     )
     $Body = @{
         "skip" = 0
@@ -51,7 +51,7 @@ function Get-EmaMasterCompanyID {
 
 function Get-EmaCompanyLicenses {
     param(
-        $CompanyPublicId
+        [Parameter(Mandatory=$true)][string]$CompanyPublicId
     )
     $Body = @{
         "skip" = 0
@@ -67,7 +67,7 @@ function Get-EmaCompanyLicenses {
 
 function Get-EmaLicenseDetails {
     param(
-        $PublicLicenseKey
+        [Parameter(Mandatory=$true)][string]$PublicLicenseKey
     )
     $Body = @{
         "publicLicenseKey" = "$PublicLicenseKey"
@@ -80,8 +80,8 @@ function Get-EmaLicenseDetails {
 
 function Set-EmaLicenseQuantity { 
     param(
-        $PublicLicenseKey,
-        [int]$Quantity
+        [Parameter(Mandatory=$true)][string]$PublicLicenseKey,
+        [Parameter(Mandatory=$true)][int]$Quantity
     )
     $Body = @{
         quantity = $Quantity
