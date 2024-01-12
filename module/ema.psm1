@@ -78,6 +78,18 @@ function Get-EmaLicenseDetails {
     Return $LicenseDetails
 }
 
+function Get-EmaCompanyDetails{
+    param(
+        [Parameter(Mandatory=$true)][string]$CompanyPublicId
+    )
+    $Body = @{
+        "companyId" = "$CompanyPublicId"
+    } | ConvertTo-Json
+
+    Write-Debug($body)
+    $CompanyDetails = Invoke-Restmethod -Uri 'https://mspapi.eset.com/api/Company/Detail' -method Post -Headers $Headers -Body $Body -contentType 'application/json'
+    Return $CompanyDetails
+}
 function Set-EmaLicenseQuantity { 
     param(
         [Parameter(Mandatory=$true)][string]$PublicLicenseKey,
